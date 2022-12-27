@@ -1,0 +1,17 @@
+CREATE FUNCTION udf_GetSKUPrice
+(
+  @ID_SKU int
+)
+RETURNS decimal(18, 2)
+AS
+  BEGIN
+
+    DECLARE @Result decimal(18, 2)
+
+    SELECT @Result = Value/Quantity from dbo.Basket where id=@ID_SKU
+
+    RETURN @Result
+
+  END
+
+GO
